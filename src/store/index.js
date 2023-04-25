@@ -1,0 +1,30 @@
+import Vue from "vue";
+import Vuex from "vuex";
+//需要使用插件一次
+//state是仓库存储数据的地方
+//mutations是修改state的唯一手段
+//actions是处理action，可以书写自己的业务逻辑，也可以处理异步
+//getters是理解为计算机属性，用于简化仓库数据，让组件获取仓库数据更加方便
+
+//引入小仓库
+import home from "./home"
+import search from "./search"
+import detail from "./detail";
+import cart from "./cart";
+import user from "./user"
+import trade from "./trade"
+import pay from "./pay"
+import myOrder from "./myOrder"
+Vue.use(Vuex);
+export default new Vuex.Store({
+    modules:{
+        home,
+        search,
+        detail,
+        cart,
+        user,
+        trade,
+        pay,
+        myOrder
+    }
+})

@@ -1,28 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div name="app">
+    <header>
+      <Header></Header>
+    </header>
+    <router-view></router-view>
+    <!-- 在Home,Search显示，在登录和注册中隐藏 -->
+    <footer>
+      <!-- 通过路由的元信息meta进行判断 -->
+      <Footer v-show="$route.meta.show"></Footer>
+    </footer>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Header from '@/components/Herder/index.vue'
+import Footer from '@/components/Footer/index.vue'
 export default {
-  name: 'App',
+  data () {
+    return {
+      msg:'aabb'
+    }
+  },
   components: {
-    HelloWorld
-  }
-}
-</script>
+    Header,
+    Footer,
+  },
+  mounted() {
+    this.$store.dispatch("categoryList");
+    //获取用户信息\
+  },
+  methods: {
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  },
 }
+
+</script>
+<style>
 </style>
